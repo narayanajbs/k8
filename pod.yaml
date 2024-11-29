@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod_main
+  namespace: roboshop
+spec:
+  containers:
+  - name: nginx-image
+    image: nginx:latest
+    ports:
+    - containerPort: 80
