@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+Kind: Ingress
+metadata:
+  name: nginx_ingress
+  namespace: Roboshope
+  annotation:
+    alb.ingress.kubernets.io/scheme: internetfacing
+    alb.ingress.kubernets.io/target-type: ip
+    alb.ingress.kubernets.io/tags: Enviornment - Dev Project - Roboshope
+    alb.ingress.kubernets.io/groupname: onlineDevOps
+spec:
+  ingressClassName: alb
+  rules:
+  - host: onlineDevOps.com
+    http:
+      pahts:
+        path: "/"
+        path_type: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port: 80
+  tls:
+  - hosts:
+    - onlineDevops.com
+    secretName: tls_onlineDevops

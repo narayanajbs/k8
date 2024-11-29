@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HarizontalPodAutoscalling
+metadata:
+  name: nginx_pod
+  namespace: Roboshope
+spec:
+ scalingTargeRef:
+  apiVersion: apps/v1
+  kind: Deployment
+  name: nginix-deployment
+minReplicas: 1
+maxRelicas: 5 
+metrics:
+- type: Resources
+  resources: 
+    name: CPU
+    target:
+      type: Utilization
+      averageUtilization: 50
