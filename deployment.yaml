@@ -28,10 +28,9 @@ metadata:
   namespace: roboshop
 spec:
   selector:
-    matchLabels:
-      app:nginx
-    ports:
-      - protocol: tcp
-        targetport: 80
-        port: 80
+      app: nginx
+  ports:
+  - protocol: tcp
+    targetport: 80
+    port: 80
   type: IP
